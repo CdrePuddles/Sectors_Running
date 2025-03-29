@@ -1,51 +1,43 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import axios from 'axios';
+// src/App.tsx
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Dashboard from "./components/Dashboard";
 
-function App() {
-  const [count, setCount] = useState(0)
-  const [message, setMessage] = useState<string>("Loading...");
+const App: React.FC = () => {
+  const [selectedPage, setSelectedPage] = useState<string>("Home");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/example'); // Use proxy or update the full URL if needed
-        setMessage(response.data.message);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setMessage("Failed to fetch data");
-      }
-    };
-    fetchData();
-  }, []);
+  const renderPage = () => {
+    switch (selectedPage) {
+      case "Home":
+        return <div>Welcome to the Home page!</div>;
+      case "Dashboard":
+        return <div><Dashboard /></div>;
+      case "Contact":
+        return <div>Contact us for more information!</div>;
+      default:
+        return <div>Page not found!</div>;
+    }
+  };
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <p>{message}</p>
-    </>
-  )
-}
 
-export default App
+  
+    <div>
+      <Header onPageChange={setSelectedPage}/> {/* Your reusable header component */}
+      <main>{renderPage()}</main>
+    </div>
+
+
+  );
+};
+
+// const Home: React.FC = () => <div>Welcome to the Home page!</div>;
+// const About: React.FC = () => <Dashboard />;
+// const Contact: React.FC = () => <div>Contact us for more information!</div>;
+// const NotFound: React.FC = () => <div>Page not found!</div>;
+
+
+
+export default App;
