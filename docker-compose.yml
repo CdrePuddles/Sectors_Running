@@ -1,0 +1,26 @@
+services:
+
+  backend:
+    build:
+      context: ./backend
+    restart: always
+    ports:
+      - "6000:6000"
+    env_file: .env
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  mongodb_data:
