@@ -22,18 +22,25 @@ Turns each running session into a rewarding challenge by joining a themed team (
 - **Frontend**: React/Typescript with Google Maps API for sector/region visualization
 - **Backend**: Node, Express
 - **Database**: Firebase to Store user & teams data, regions
+
+## How to run
+- `npm i` to install the necessary packages
+- `npm run dev` to start the backend
+- `cd frontend` then `npm run dev` to start the front end.
+
+`http://localhost:5173/` in a browser to connect.
+
 ## Challenges we ran into
 Took us a long time to figure out how to make a choropleth map using google api and react/ts
 Learning a new tech stack: it was the first time using this tech stack for every team member from frontend to backend & we had to get help from our lovely mentors to overcome challenges we ran into
 Due to the time constraint, we weren't able to implement all of our ideas into this hackathon project, but we can see the potential in making our app a lot better in the future!
+
 ## Accomplishments that we're proud of
 Integrating google maps api to our project
 Actually making the choropleth map reflect on our backend data!
 Learning React/Typescript in a day and making a decent looking prototype
 Integrating firestore on the backend
-## What we learned
-How powerful google maps api can be
-How much work/progress we can do in 24 hours 😂
+
 ## What's next for Sector
 Our original idea including getting data from a user's strava account, obtaining the start/end coordinates and miles ran to use it as a score for each team, we want to make integration of that data to be seamless for anyone to participate
 Badges & trophies to motivate users to not only participate in the team challenges, but also challenge each individual with their own health goals
