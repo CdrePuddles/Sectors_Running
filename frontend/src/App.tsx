@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Team from "./components/Team";
 import Profile from "./components/Profile";
 import About from "./components/About";
+import useTeamRuns from './hooks/useTeamRuns';
 
 
 import { motion, AnimatePresence } from "framer-motion";

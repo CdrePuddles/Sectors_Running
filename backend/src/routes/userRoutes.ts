@@ -7,6 +7,7 @@ import {
   getGreenTotalKm, 
   getYellowTotalKm,
   getWinnersForAllPlaces,
+  getWinners,
   signup,
   login
  } from '../controllers/userController';
@@ -26,6 +27,8 @@ router.get('/yellow/total', getYellowTotalKm);
 router.get('/green/total', getGreenTotalKm);
 
 router.get('/winners', getWinnersForAllPlaces);
+
+router.get('/rundata', getWinners);
 
 router.post('/signup', signup);
 
