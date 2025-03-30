@@ -5,7 +5,7 @@ import { useAuth, AuthProvider, ProfileProps } from "./AuthContext";
 
 const Team: React.FC = () => {
   const { profile } = useAuth();
-  const teamScore = 10250;
+  const teamScore = 1700;
 
   const members: ProfileProps[] = [
     {
@@ -13,7 +13,7 @@ const Team: React.FC = () => {
       photoUrl: "https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg",
       username: "alex_runner",
       memberSince: "January 2020",
-      distanceTravelled: 123,
+      distanceTravelled: 125,
       team: "Blue",
     },
     {
@@ -21,7 +21,7 @@ const Team: React.FC = () => {
       photoUrl: "https://www.humaneworld.org/sites/default/files/styles/responsive_3_4_500w/public/2021-06/hamster-540188.jpg.webp?itok=C1joOtzB",
       username: "jamie_tactician",
       memberSince: "March 2021",
-      distanceTravelled: 456,
+      distanceTravelled: 75,
       team: "Blue",
     },
     {
