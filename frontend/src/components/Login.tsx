@@ -30,7 +30,7 @@ const Login: React.FC = () => {
       name: "Kyle Test",
       photoUrl: "https://static-00.iconduck.com/assets.00/cat-face-emoji-2048x1821-x3kf878r.png",
       username: "kyle123",
-      memberSince: "March 29, 2025",
+      memberSince: "March 2025",
       distanceTravelled: 1500,
       team: "Blue"
     };
