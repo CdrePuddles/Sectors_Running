@@ -1,0 +1,14 @@
+.header {
+    background-color: "#ff6f61";
+    padding: "10px";
+    text-align: "center";
+    color: "white";
+  };
+  
+.nav-item {
+    margin: "0 10px",;
+    color: "white";
+    textDecoration: "none";
+    display: "inline-block";
+    backgroundColor: "transparent";
+  };

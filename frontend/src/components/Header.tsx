@@ -2,7 +2,7 @@
 import React from "react";
 import RunningSVG from "./logo.svg"; 
 import Dashboard from "./Dashboard";
-
+import "./Header.css";
 
 // const Header: React.FC = () => {
 //   return (
@@ -27,17 +27,20 @@ interface HeaderProps {
   const Header: React.FC<HeaderProps> = ({ onPageChange }) => {
     return (
       <header className="header" style={headerStyle}>
-        <h1 className="header-title">My React App</h1>
+        <h1 className="header-title">Sectors Running</h1>
         <nav className="header-nav">
-          <div className="nav-item" style={linkStyle} onClick={() => onPageChange("Home")}>
+          <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Home")}>
             Home
-          </div>
-          <div className="nav-item" style={linkStyle} onClick={() => onPageChange("Dashboard")}>
+          </button>
+          <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Dashboard")}>
             Dashboard
-          </div>
-          <div className="nav-item" style={linkStyle} onClick={() => onPageChange("Contact")}>
+          </button>
+          <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Login")}>
+            Login
+          </button>
+          <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Contact")}>
             Contact
-          </div>
+          </button>
         </nav>
       </header>
     );
@@ -57,6 +60,7 @@ const linkStyle: React.CSSProperties = {
   color: "white",
   textDecoration: "none",
   display: "inline-block",
+  backgroundColor: "transparent",
 };
 
 export default Header;

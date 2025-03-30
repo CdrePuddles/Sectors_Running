@@ -41,3 +41,26 @@
   color: #888;
 }
 
+
+/* Animations and shit */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(20px); /* Start slightly below */
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms; /* Adjust duration as needed */
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-20px); /* Exit slightly above */
+  transition: opacity 300ms, transform 300ms; /* Matches the enter timing */
+}
