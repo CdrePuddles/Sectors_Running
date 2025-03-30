@@ -107,8 +107,8 @@ const Login: React.FC = () => {
                 Email:
                 <input
                   type="text"
-                  name="username"
-                  value={formData.username}
+                  name="email"
+                  value={formData.email}
                   onChange={handleChange}
                   style={inputStyle}
                   required
