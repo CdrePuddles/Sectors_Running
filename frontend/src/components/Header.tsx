@@ -3,6 +3,7 @@ import React from "react";
 import RunningSVG from "./logo.svg"; 
 import Dashboard from "./Dashboard";
 import "./Header.css";
+import logo from "../assets/img/logo.png";
 
 // const Header: React.FC = () => {
 //   return (
@@ -27,7 +28,7 @@ interface HeaderProps {
   const Header: React.FC<HeaderProps> = ({ onPageChange }) => {
     return (
       <header className="header" style={headerStyle}>
-        <h1 className="header-title">Sectors Running</h1>
+        <img src={logo} alt="Sector" style={{ width: "40%" }}></img>
         <nav className="header-nav">
           <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Home")}>
             Home
@@ -49,10 +50,9 @@ interface HeaderProps {
   //export default Header;
 
 const headerStyle: React.CSSProperties = {
-  backgroundColor: "#ff6f61",
+  backgroundColor: "linear-gradient(rgb(17, 19, 40),rgb(17, 19, 40))",
   padding: "10px",
-  textAlign: "center",
-  color: "white",
+  textAlign: "center"
 };
 
 const linkStyle: React.CSSProperties = {
