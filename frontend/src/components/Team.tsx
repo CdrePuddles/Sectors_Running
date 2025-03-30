@@ -36,7 +36,6 @@ const Team: React.FC = () => {
   
   
 
-
   return (
     <div style={containerStyle}>
       <h1>Blue Team Page</h1>

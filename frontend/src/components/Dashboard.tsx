@@ -6,22 +6,22 @@ const Dashboard: React.FC = () => {
     {
       name: "Blue",
       distanceRan: 1700, // in kilometers
-      territories: ["V6C", "V6E"],
+      territories: ["Downtown", "Hastings-Sunrise"],
     },
     {
       name: "Red",
       distanceRan: 1200,
-      territories: ["V6A", "V6B"],
+      territories: ["South Cambie", "Victoria-Fraserview"],
     },
     {
       name: "Green",
       distanceRan: 950,
-      territories: ["V5K"],
+      territories: ["Marpole", "Riley Park"],
     },
     {
       name: "Yellow",
       distanceRan: 1100,
-      territories: ["V5Y", "V5Z"],
+      territories: ["Oakridge", "Shaughnessy", "Dunbar-Southlands"],
     },
   ];
   
@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
             <strong>Distance Ran:</strong> 1700 km
           </p>
           <p>
-            <strong>Territories Crowned:</strong> V6C, V6E
+            <strong>Territories Crowned:</strong> Downtown, Hastings-Sunrise
           </p>
         </div>
       </div>
