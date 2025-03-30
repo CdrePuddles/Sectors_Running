@@ -7,17 +7,6 @@ header {
   border-bottom: 5px solid #007bff; /* Add a bottom border */
 }
 
-/* button {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
+.nav-item:hover {
+  transform: scale(1.1); /* Slightly enlarge */
 }
-
-button:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* Add a subtle hover background 
-}
-
-*/

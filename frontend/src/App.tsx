@@ -6,15 +6,26 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Contact from "./components/Contact";
+import Team from "./components/Team";
+import Profile from "./components/Profile";
+
 import { motion, AnimatePresence } from "framer-motion";
-import { useAuth, AuthProvider } from "./components/AuthContext";
+import { useAuth, AuthProvider, ProfileProps } from "./components/AuthContext";
 import "./App.css"
 
 
+// const profileData = {
+//   name: "Kyle Smith",
+//   photoUrl: "https://static-00.iconduck.com/assets.00/cat-face-emoji-2048x1821-x3kf878r.png",
+//   username: "kyle123",
+//   memberSince: "March 29, 2025",
+//   distanceTravelled: 1500,
+//   team: "Red"
+// };
+
 const App: React.FC = () => {
   const [selectedPage, setSelectedPage] = useState<string>("Home");
-  //const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  //const { isLoggedIn, login, logout } = useAuth();
+  //const { profile } = useAuth();
 
 
   const renderPage = () => {
@@ -25,8 +36,10 @@ const App: React.FC = () => {
         return <Dashboard />;
       case "Contact":
         return <Contact/>
+      case "Team":
+        return <Team/>
       case "Profile":
-        return <div>Contact us for more information!</div>
+          return <Profile/>
       case "Login":
           return <Login />
       default:
