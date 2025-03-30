@@ -27,9 +27,9 @@ const Header: React.FC<HeaderProps> = ({ onPageChange }) => {
         <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Home")}>
           Home
         </button>
-        {/* <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Dashboard")}>
+        <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Dashboard")}>
           Dashboard
-        </button> */}
+        </button>
         <button className="nav-item" style={linkStyle} onClick={() => onPageChange("About")}>
           About
         </button>
