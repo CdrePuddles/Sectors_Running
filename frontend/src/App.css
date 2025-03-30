@@ -4,3 +4,6 @@ main {
   margin: auto;
 }
 
+.gm-ui-hover-effect {
+    display: none !important;
+  }
