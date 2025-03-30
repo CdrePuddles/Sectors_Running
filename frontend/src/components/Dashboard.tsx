@@ -1,8 +1,10 @@
 // src/components/Dashboard.tsx
 import React, { useState } from "react";
 
+
 const Dashboard: React.FC = () => {
   const [distance, setDistance] = useState<number>(0);
+  
 
   const handleRun = () => {
     setDistance((prev) => prev + Math.floor(Math.random() * 5 + 1)); // Randomly increases distance.

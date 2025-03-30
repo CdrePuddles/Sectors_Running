@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { firestore } from '../firebase';
+// import { collection, getDocs } from "firebase/firestore";
 
 interface RedDoc {
     UserID: string;
@@ -205,6 +206,67 @@ export const getWinnersForAllPlaces = async (req: Request, res: Response) => {
     } catch (error) {
       return res.status(500).json({ error: 'Server error' });
     }
+  };
+
+  interface TeamData {
+    kmRun: number;
+    color: string;
+  }
+  
+  interface PlaceData {
+    [teamName: string]: TeamData;
+  }
+  
+  interface Result {
+    [placeName: string]: PlaceData;
+  }
+
+export const getWinners = async (req: Request, res: Response) => {
+    try {
+    //   const teams = ['Red', 'Green', 'Yellow'];
+  
+      const results: Record<string, { teams: Record<string, number> }> = {};
+  
+    //   for (const team of teams) {
+    // const snapshot = await firestore.collection(team).get();
+    const runsRef = firestore.collection('runs');
+    const snapshot = await runsRef.get();
+
+    const placeTeamRunsMap = new Map();
+
+    for (const doc of snapshot.docs) {
+        const data = doc.data();
+        const placeName = data.placeName;
+        const km = data.km
+        const teamName = data.team;
+        let color = data.color // default grey
+
+        if (!placeTeamRunsMap.has(placeName)) {
+            placeTeamRunsMap.set(placeName, new Map());
+        }
+
+        const teamMap = placeTeamRunsMap.get(placeName)
+        if (!teamMap.has(teamName)) {
+            teamMap.set(teamName, {km, color})
+        } else {
+            const existingData = teamMap.get(teamName);
+            existingData.km += km;
+            teamMap.set(teamName, existingData);
+        }
+    }
+
+        const result: Result = {};
+        placeTeamRunsMap.forEach((teamMap : Map<string, TeamData>, placeName : string) => {
+            result[placeName] = {};
+            teamMap.forEach((teamData, teamName) => {
+                result[placeName][teamName] = teamData;
+            });
+        });
+        res.status(200).json(result);
+    } catch (error) {
+        console.error('Error fetching team runs:', error);
+        res.status(500).json({ error: 'Failed to fetch team runs data' });
+    }        
   };
 
   export const signup = async (req: Request, res: Response) => {
