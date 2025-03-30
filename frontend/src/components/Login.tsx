@@ -27,7 +27,7 @@ const Login: React.FC = () => {
     });
 
     const profileData = {
-      name: "Kyle Test",
+      name: "Kyle the Great",
       photoUrl: "https://static-00.iconduck.com/assets.00/cat-face-emoji-2048x1821-x3kf878r.png",
       username: "kyle123",
       memberSince: "March 2025",
