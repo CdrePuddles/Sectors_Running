@@ -1,32 +1,24 @@
 // src/components/Header.tsx
-import React from "react";
-import RunningSVG from "./logo.svg"; 
-import Dashboard from "./Dashboard";
+import React, { useState, createContext, useContext } from "react";
+import { useAuth } from "./AuthContext";
+
 import "./Header.css";
 
-// const Header: React.FC = () => {
-//   return (
-//     <header style={headerStyle}>
-//       <h1>Sectors Running <img src={RunningSVG} alt="Running icon" style={{ width: "100px", backgroundColor: "transparent" }} />
-
-//       </h1>
-//       <nav>
-//         <a href="#home" className="nav-item" style={linkStyle} onClick={() => onPageChange("Home")}>Home</a>
-//         <a href="#about" className="nav-item" style={linkStyle}>About</a>
-//         <a href="#contact" className="nav-item" style={linkStyle}>Contact</a>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// src/components/Header.tsx
 interface HeaderProps {
     onPageChange: (page: string) => void;
   }
   
   const Header: React.FC<HeaderProps> = ({ onPageChange }) => {
+  const { isLoggedIn, login, logout } = useAuth();
+
+  const signout = () => {
+    onPageChange("Home");
+    logout();
+  };
+
+
     return (
-      <header className="header" style={headerStyle}>
+      <header className="header">
         <h1 className="header-title">Sectors Running</h1>
         <nav className="header-nav">
           <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Home")}>
@@ -35,12 +27,18 @@ interface HeaderProps {
           <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Dashboard")}>
             Dashboard
           </button>
-          <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Login")}>
-            Login
-          </button>
+          {isLoggedIn && <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Profile")}>
+            Profile
+          </button>}
           <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Contact")}>
             Contact
           </button>
+          {!isLoggedIn && <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Login")}>
+            Login
+          </button>}
+          {isLoggedIn && <button className="nav-item" style={linkStyle} onClick={signout}>
+            Sign out
+          </button>}
         </nav>
       </header>
     );
@@ -48,12 +46,12 @@ interface HeaderProps {
   
   //export default Header;
 
-const headerStyle: React.CSSProperties = {
-  backgroundColor: "#ff6f61",
-  padding: "10px",
-  textAlign: "center",
-  color: "white",
-};
+// const headerStyle: React.CSSProperties = {
+//   backgroundColor: "#ff6f61",
+//   padding: "10px",
+//   textAlign: "center",
+//   color: "white",
+// };
 
 const linkStyle: React.CSSProperties = {
   margin: "0 10px",

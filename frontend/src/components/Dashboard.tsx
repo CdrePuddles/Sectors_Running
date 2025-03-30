@@ -9,13 +9,13 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <main style={dashboardStyle}>
+    <div style={dashboardStyle}>
       <h2>Welcome to RunTracker!</h2>
       <p>Distance covered: {distance} km</p>
       <button onClick={handleRun} style={buttonStyle}>
         Add Distance 🏃‍♂️
       </button>
-    </main>
+    </div>
   );
 };
 

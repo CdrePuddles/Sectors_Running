@@ -1,14 +1,23 @@
-.header {
-    background-color: "#ff6f61";
-    padding: "10px";
-    text-align: "center";
-    color: "white";
-  };
-  
-.nav-item {
-    margin: "0 10px",;
-    color: "white";
-    textDecoration: "none";
-    display: "inline-block";
-    backgroundColor: "transparent";
-  };
+header {
+  background-color: #333; /* Background color */
+  color: white; /* Text color */
+  text-align: center; /* Center-align text */
+  padding: 20px; /* Add space inside the header */
+  font-family: Arial, sans-serif; /* Font style */
+  border-bottom: 5px solid #007bff; /* Add a bottom border */
+}
+
+/* button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Add a subtle hover background 
+}
+
+*/

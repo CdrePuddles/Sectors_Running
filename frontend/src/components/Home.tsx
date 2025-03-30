@@ -3,12 +3,6 @@ import React, { useState } from "react";
 import WebPImage from "../assets/img/Vancouver.webp";
 
 const Dashboard: React.FC = () => {
-  const [distance, setDistance] = useState<number>(0);
-
-  const handleRun = () => {
-    setDistance((prev) => prev + Math.floor(Math.random() * 5 + 1)); // Randomly increases distance.
-  };
-
   return (
     <main style={dashboardStyle}>
         <h2>Home page!</h2>
