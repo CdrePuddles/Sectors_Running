@@ -8,6 +8,8 @@ import Dashboard from "./components/Dashboard";
 import Contact from "./components/Contact";
 import Team from "./components/Team";
 import Profile from "./components/Profile";
+import About from "./components/About";
+
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth, AuthProvider, ProfileProps } from "./components/AuthContext";
@@ -25,8 +27,6 @@ import "./App.css"
 
 const App: React.FC = () => {
   const [selectedPage, setSelectedPage] = useState<string>("Home");
-  //const { profile } = useAuth();
-
 
   const renderPage = () => {
     switch (selectedPage) {
@@ -34,6 +34,8 @@ const App: React.FC = () => {
         return <Home/>;
       case "Dashboard":
         return <Dashboard />;
+        case "About":
+          return <About />;
       case "Contact":
         return <Contact/>
       case "Team":

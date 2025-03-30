@@ -5,12 +5,18 @@ import { GoogleMap, LoadScript, Polygon } from "@react-google-maps/api";
 import WebPImage from "../assets/img/Vancouver.webp";
 
 const Dashboard: React.FC = () => {
+  const [mapKey, setMapKey] = useState(0);
 
+  const refreshMap = () => {
+    setMapKey((prevKey) => prevKey + 1); // Increment the key to force re-render
+  };
+  
   const mapContainerStyle = {
     width: "80%",
     height: "500px",
     margin: "auto",
   };
+
   
   const center = {
     lat: 49.2827, // Latitude for Vancouver
@@ -38,6 +44,26 @@ const Dashboard: React.FC = () => {
       ],
       color: "#0000FF", // Blue for this postal code
     },
+    {
+      postalCode: "V3K",
+      paths: [
+        { lat: 49.270, lng: -123.120 },
+        { lat: 49.275, lng: -123.115 },
+        { lat: 49.280, lng: -123.120 },
+        { lat: 49.285, lng: -123.125 },
+      ],
+      color: "#FF0000", // Red for this postal code
+    },
+    {
+      postalCode: "V7H",
+      paths: [
+        { lat: 49.290, lng: -123.115 },
+        { lat: 49.295, lng: -123.110 },
+        { lat: 49.300, lng: -123.115 },
+        { lat: 49.295, lng: -123.120 },
+      ],
+      color: "#0000FF", // Blue for this postal code
+    },
   ];
   
 
@@ -49,6 +75,7 @@ const Dashboard: React.FC = () => {
           zoom={13}
         >
           {postalCodePolygons.map((polygon, index) => (
+            
             <Polygon
               key={index}
               paths={polygon.paths}

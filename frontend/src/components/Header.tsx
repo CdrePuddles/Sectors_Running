@@ -14,20 +14,25 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onPageChange }) => {
   const { isLoggedIn, login, logout } = useAuth();
 
+  
   const signout = () => {
     onPageChange("Home");
+    refreshMap();
     logout();
   };
 
   return (
     <header className="header" style={headerStyle}>
-      <img src={logo} alt="Sector" style={{ width: "40%" }}></img>
+      <img src={logo} alt="Sector" style={{ width: "10%" }}></img>
       <nav className="header-nav">
         <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Home")}>
           Home
         </button>
         <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Dashboard")}>
           Dashboard
+        </button>
+        <button className="nav-item" style={linkStyle} onClick={() => onPageChange("About")}>
+          About
         </button>
           {isLoggedIn && 
           <div style={loggedinMenu}> <button className="nav-item" style={linkStyle} onClick={() => onPageChange("Profile")}> 

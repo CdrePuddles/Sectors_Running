@@ -4,7 +4,7 @@ header {
   text-align: center; /* Center-align text */
   padding: 20px; /* Add space inside the header */
   font-family: Arial, sans-serif; /* Font style */
-  border-bottom: 5px solid #007bff; /* Add a bottom border */
+  border-bottom: 5px solid #007bff5b; /* Add a bottom border */
 }
 
 .nav-item:hover {
