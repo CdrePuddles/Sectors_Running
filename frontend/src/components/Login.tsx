@@ -53,8 +53,13 @@ const Login: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
       console.log(isSignUp ? "Sign Up Data:" : "Login Data:", formData);
+      if (isSignUp) {
+        setProfile(formData);
+      } else {
+        setProfile(profileData);
+      }
       login();
-      setProfile(formData); // Save profile data globally in the context
+      //setProfile(formData); // Save profile data globally in the context
       console.log("Profile saved to Auth Context:", formData);
 
       // Handle form submission (e.g., call an API)
@@ -114,6 +119,17 @@ const Login: React.FC = () => {
                   required
                 />
               </label>
+              <label style={labelStyle}>
+            Strava ID:
+            <input
+              type="strava"
+              name="strava"
+              value={formData.strava}
+              onChange={handleChange}
+              style={inputStyle}
+              required
+            />
+          </label>
             </>
           )}
   
@@ -140,6 +156,7 @@ const Login: React.FC = () => {
               required
             />
           </label>
+
   
           <button type="submit" style={buttonStyle}>
             {isSignUp ? "Sign Up" : "Login"}
@@ -154,9 +171,9 @@ const Login: React.FC = () => {
         </button>
 
 
-        <h3>DEBUG:</h3>
+        {/* <h3>DEBUG:</h3>
         <button onClick={debugLogin}>Login</button>
-        <button onClick={logout}>Logout</button>
+        <button onClick={logout}>Logout</button> */}
       </div>
     );
   };  

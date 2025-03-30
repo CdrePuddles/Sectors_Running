@@ -1,60 +1,89 @@
 // src/components/Dashboard.tsx
 import React, { useState } from "react";
-import WebPImage from "../assets/img/Vancouver.webp";
+import { useAuth, AuthProvider, ProfileProps } from "./AuthContext";
+
 
 const Team: React.FC = () => {
-  const teamData = [
+  const { profile } = useAuth();
+  const teamScore = 10250;
+
+  const members: ProfileProps[] = [
     {
-      name: "Blue",
-      distanceRan: 1700, // in kilometers
-      territories: ["V6C", "V6E"],
+      name: "Alex",
+      photoUrl: "https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg",
+      username: "alex_runner",
+      memberSince: "January 2020",
+      distanceTravelled: 123,
+      team: "Blue",
     },
     {
-      name: "Red",
-      distanceRan: 1200,
-      territories: ["V6A", "V6B"],
+      name: "Jamie",
+      photoUrl: "https://www.humaneworld.org/sites/default/files/styles/responsive_3_4_500w/public/2021-06/hamster-540188.jpg.webp?itok=C1joOtzB",
+      username: "jamie_tactician",
+      memberSince: "March 2021",
+      distanceTravelled: 456,
+      team: "Blue",
     },
     {
-      name: "Green",
-      distanceRan: 950,
-      territories: ["V5K"],
-    },
-    {
-      name: "Yellow",
-      distanceRan: 1100,
-      territories: ["V5Y", "V5Z"],
+      name: "Taylor",
+      photoUrl: "https://www.allaboutbirds.org/news/wp-content/uploads/2024/05/438159401-Prothonotary_Warbler-Ryan_Justice-FI.jpg",
+      username: "taylor_speed",
+      memberSince: "June 2022",
+      distanceTravelled: 0,
+      team: "Blue",
     },
   ];
   
   
+
+
   return (
     <div style={containerStyle}>
-      <h1>Team Stats</h1>
-
-      {/* Special Blue Team */}
-      <div style={blueTeamStyle}>
-        <div style={{ ...teamCardStyle, ...specialCardStyle, width: "300px" }}>
-          <h2 style={{ color: "blue" }}>👑 Blue Team</h2>
-          <p>
-            <strong>Distance Ran:</strong> 1700 km
-          </p>
-          <p>
-            <strong>Territories Crowned:</strong> V6C, V6E
-          </p>
-        </div>
+      <h1>Blue Team Page</h1>
+      <div style={teamCardStyle}>
+        <h2 style={{ color: "blue" }}>👑 Blue Team</h2>
+        <p>
+          <strong>Score:</strong> {teamScore} points
+        </p>
       </div>
-
-      {/* Line of Remaining Teams */}
-      <div style={lineStyle}>
-        {teamData.slice(1).map((team, index) => (
-          <div key={index} style={teamCardStyle}>
-            <h2 style={{ color: team.name.toLowerCase() }}>{team.name} Team</h2>
-            <p>
-              <strong>Distance Ran:</strong> {team.distanceRan} km
-            </p>
-            <p>
-              <strong>Territories Crowned:</strong> {team.territories.join(", ")}
-            </p>
+      {/* <h3>Team Members</h3> */}
+      <div style={gridStyle}>
+      <div key={profile.name} style={memberCardStyle}>
+            <img src={profile.photoUrl} alt={`${profile.name}'s profile`} style={photoStyle} />
+            <div style={user}>
+              <h4>{profile.name}</h4>
+              <p>
+                <strong>Username</strong><br></br> {profile.username}
+              </p>
+              <p>
+                <strong>Member Since</strong> <br></br> {profile.memberSince}
+              </p>
+              <p>
+                <strong>Distance Travelled</strong><br></br>  {profile.distanceTravelled} km
+              </p>
+              <p>
+                <strong>Team</strong><br></br>  {profile.team}
+              </p>
+            </div>
+          </div>
+        {members.map((member, index) => (
+          <div key={index} style={memberCardStyle}>
+            <img src={member.photoUrl} alt={`${member.name}'s profile`} style={photoStyle} />
+            <div style={user}>
+              <h3>{member.name}</h3>
+              <p>
+                <strong>Username</strong><br></br>  {member.username}
+              </p>
+              <p>
+                <strong>Member Since</strong> <br></br> {member.memberSince}
+              </p>
+              <p>
+                <strong>Distance Travelled</strong><br></br>  {member.distanceTravelled} km
+              </p>
+              <p>
+                <strong>Team</strong><br></br>  {member.team}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -62,49 +91,50 @@ const Team: React.FC = () => {
   );
 };
 
-
-  
-// Inline styling for simplicity
-const containerStyle: React.CSSProperties = {
+const containerStyle = {
   padding: "20px",
-  maxWidth: "800px",
-  margin: "0 auto",
+  fontFamily: "Arial, sans-serif",
   textAlign: "center",
+  width: "65%",
+  margin: "auto",
 };
 
-const blueTeamStyle: React.CSSProperties = {
-  display: "flex",
-  justifyContent: "center", // Centers Blue Team horizontally
-  alignItems: "center", // Centers Blue Team vertically
-  height: "200px", // Adjust as needed for spacing
-  marginBottom: "20px", // Adds spacing between the Blue Team and the rest
+const teamCardStyle = {
+  border: "1px solid #ccc",
+  borderRadius: "8px",
+  padding: "20px",
+  margin: "20px auto",
+  backgroundColor: "#d3eaff",
+  width: "400px",
+  
 };
 
-const lineStyle: React.CSSProperties = {
-  display: "flex",
-  justifyContent: "space-around", // Distributes the remaining teams horizontally
-  gap: "20px", // Adds spacing between the team cards
+const gridStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+  gap: "20px",
+  marginTop: "20px",
 };
 
-const teamCardStyle: React.CSSProperties = {
-  boxSizing: "border-box",
+const memberCardStyle = {
   border: "1px solid #ccc",
   borderRadius: "8px",
   padding: "15px",
   backgroundColor: "#f9f9f9",
-  textAlign: "center",
-  width: "250px", // Ensures consistent card size
+  textAlign: "left",
+
 };
 
-const specialCardStyle: React.CSSProperties = {
-  border: "2px solid gold", // Gold border to highlight the leading team
-  backgroundColor: "#e0f7fa", // Unique background color (light blue)
-  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // Adds a shadow for emphasis
+const photoStyle = {
+  width: "100%",
+  borderRadius: "8px",
+  marginBottom: "10px",
 };
 
-
-
-
-
+const user = {
+  border: "1px solid #ccc",
+  borderRadius: "8px",
+  padding: "5px",
+};
 
 export default Team;
