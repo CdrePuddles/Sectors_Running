@@ -1,16 +1,21 @@
 // src/App.tsx
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, createContext, useContext } from "react";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import Contact from "./components/Contact";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { useAuth, AuthProvider } from "./components/AuthContext";
+import "./App.css"
 
 
 const App: React.FC = () => {
   const [selectedPage, setSelectedPage] = useState<string>("Home");
+  //const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  //const { isLoggedIn, login, logout } = useAuth();
+
 
   const renderPage = () => {
     switch (selectedPage) {
@@ -19,7 +24,9 @@ const App: React.FC = () => {
       case "Dashboard":
         return <Dashboard />;
       case "Contact":
-        return <div>Contact us for more information!</div>;
+        return <Contact/>
+      case "Profile":
+        return <div>Contact us for more information!</div>
       case "Login":
           return <Login />
       default:
@@ -47,6 +54,7 @@ const App: React.FC = () => {
 
   
     <div>
+      <AuthProvider>
       <Header onPageChange={setSelectedPage} />
       <AnimatePresence mode="wait">
         <motion.div
@@ -57,11 +65,12 @@ const App: React.FC = () => {
           variants={pageVariants}
           transition={{ duration: 0.5 }}
         >
-          {renderPage()}
+          <main id ='content'>{renderPage()}</main>
         </motion.div>
       </AnimatePresence>
 
       <Footer />
+      </AuthProvider>
     </div>
 
 

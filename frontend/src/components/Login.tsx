@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, createContext, useContext } from "react";
+import { useAuth } from "./AuthContext";
 import "./Login.css"; // Ensure you have styles for your forms
 
 const Login: React.FC = () => {
@@ -6,8 +7,10 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const { isLoggedIn, login, logout } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
+    
     e.preventDefault();
     if (!email || !password) {
       setError("Please fill in all fields.");
@@ -46,6 +49,9 @@ const Login: React.FC = () => {
         {error && <p className="error-message">{error}</p>}
         <button type="submit">{isSignup ? "Sign Up" : "Login"}</button>
       </form>
+      <h3>DEBUG:</h3>
+    <button onClick={login}>Login</button>
+    <button onClick={logout}>Logout</button>
       <p>
         {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
         <span
@@ -57,6 +63,8 @@ const Login: React.FC = () => {
         </span>
       </p>
     </div>
+
+    
   );
 };
 
