@@ -32,7 +32,7 @@ const Login: React.FC = () => {
       username: "kyle123",
       memberSince: "March 29, 2025",
       distanceTravelled: 1500,
-      team: "Red"
+      team: "Blue"
     };
 
     const debugLogin = () => {
