@@ -4,6 +4,8 @@
 ### Firebase ###
 serviceAccountKey.json
 
+.env
+
 ### Node ###
 # Logs
 logs
