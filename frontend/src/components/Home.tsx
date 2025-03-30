@@ -14,7 +14,7 @@ const Dashboard: React.FC = () => {
   
   const mapContainerStyle = {
     width: "80%",
-    height: "500px",
+    height: "75vh ",
     margin: "auto",
   };
 

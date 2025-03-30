@@ -34,7 +34,7 @@ const App: React.FC = () => {
         return <Home/>;
       case "Dashboard":
         return <Dashboard />;
-        case "About":
+      case "About":
           return <About />;
       case "Contact":
         return <Contact/>
