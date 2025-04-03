@@ -1,4 +1,4 @@
-# Squad Up, Team UP: Welcome to Sector Running!
+# Squad Up, Team Up: Welcome to Sector Running!
 Turn your runs into a thrilling competition with Sector Running, the ultimate program to gamify your fitness journey. Gather your team and challenge others to claim dominance over your local postal code. Every mile you run brings your team closer to becoming the reigning Kings of the Sector.
 
 🏃‍♀️ **How it Works:** 
